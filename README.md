@@ -4,6 +4,7 @@
 **GitHub:** github.com/ecmccallum
 **Started:** May 2026
 **Status:** Active
+**Last updated:** May 2026
 
 ---
 
@@ -11,27 +12,18 @@
 
 bilan-critique is a comparative greenhouse gas reporting analysis of French environmental, engineering, certification, and ecological transition organisations.
 
-The project uses publicly available BEGES reports from the ADEME platform to evaluate not only what these organisations emit, but how clearly, completely, and honestly they report their emissions.
+The project uses publicly available BEGES reports from the ADEME platform to evaluate not only what these organisations emit, but how clearly, completely, and transparently they disclose their emissions and reporting methodology.
 
 The central question is this: do organisations whose work is directly connected to environmental performance, sustainability certification, compliance, and ecological transition produce high-quality greenhouse gas reporting themselves?
 
 This is a meta-analysis. The subject is not emissions. The subject is reporting quality.
 
----
-
-## Why this project exists
-
-Most practitioners use published BEGES reports as data sources. Very few analyse them critically as objects of study.
-
-Applying ISO 14064-1, the GHG Protocol Corporate and Scope 3 Standards, and ESRS E1 climate disclosure logic simultaneously to a set of firms in the same thematic space produces a genuinely novel comparison: not of emissions levels, but of reporting quality and methodological transparency.
-
-For a hiring manager at a carbon consultancy or environmental advisory firm, this project signals something specific. It shows that the author understands not just how to calculate a bilan carbone, but how to assess whether one has been done well.
 
 ---
 
 ## Project context
 
-This project is part of a GitHub portfolio built during an M1 internship in Environmental Analytical Chemistry at UPPA Pau, under Prof. Robert Duran at IPREM CNRS.
+This project is part of a GitHub portfolio.
 
 It builds directly on previous Python-based emissions modelling work, including a Scope 1 and Scope 2 baseline and decarbonisation trajectory model for the Lacq industrial basin. That project covered emission factor sourcing, scenario modelling, and trajectory building. This project extends that foundation into Scope 3 depth, cross-firm benchmarking, regulatory framework application, and reporting quality assessment.
 
@@ -41,12 +33,7 @@ It builds directly on previous Python-based emissions modelling work, including 
 
 The primary data source is the ADEME BEGES open-data export, downloaded from bilans-ges.ademe.fr in May 2026.
 
-The raw dataset contains published greenhouse gas inventories from over 11,000 French organisations reporting through the BEGES platform. The file is stored locally as:
-
-```
-data/raw/export-opendata-inventories-03-05-2026.csv
-```
-
+The raw dataset contains published greenhouse gas inventories from over 11,000 French organisations reporting through the BEGES platform. The file is stored locally as: data/raw/export-opendata-inventories-03-05-2026.csv
 A supplementary reference is the Agence Déclic voluntary bilan carbone 2024/2025, used as a methodological benchmark and transparency reference. Total emissions of 69 tCO2eq across 26 employees, with six years of trend data and a detailed indirect emissions breakdown.
 
 ---
@@ -62,14 +49,11 @@ Scope 1, 2, and 3 accounting framework. All 15 Scope 3 categories assessed for r
 **ESRS E1 (CSRD)**
 EU climate reporting disclosure requirements. Double materiality logic applied. Selected disclosure requirements checked against published BEGES data for each firm.
 
-**Bilan Carbone V9 (ABC, 2024)**
-French methodology context. ADEME Base Empreinte emission factors mapped against GHG Protocol categories. BEGES category structure (P1 through P6) translated into Scope 1, 2, and 3 equivalents.
-
 ---
 
 ## Selected firms
 
-Five firms were selected for comparative analysis. Five firms rather than three were chosen to allow more robust cross-firm comparison and to capture a wider range of organisation types within the environmental and sustainability advisory space.
+Five firms were selected to allow cross-firm comparison across different organisation types within the environmental and sustainability advisory space.
 
 **ARTELIA**
 A large multidisciplinary engineering and consulting organisation working across mobility, water, energy, buildings, and industry. Selected for its scale and breadth of environmental engineering activity.
@@ -78,7 +62,7 @@ A large multidisciplinary engineering and consulting organisation working across
 An environmental and technical engineering consultancy. Its overlap with Artelia is intentional. Comparing two firms with similar profiles reveals how methodological choices rather than activity type drive reporting differences.
 
 **BUREAU VERITAS EXPLOITATION**
-A major inspection, certification, compliance, and risk management organisation. Its inclusion is important because the company works directly in standards, verification, and regulatory trust. A firm that verifies others should itself report to a high standard.
+A major inspection, certification, compliance, and risk management organisation. Its inclusion is important because the company works directly in standards, verification, and regulatory trust, making its own reporting quality especially relevant to assess.
 
 **ECOCERT SA**
 A sustainability certification, consulting, and training organisation focused on durable practices, environmental standards, climate, biodiversity, and responsible economic models. 778 employees, 2024 report, meaningful indirect emissions.
@@ -86,15 +70,33 @@ A sustainability certification, consulting, and training organisation focused on
 **Eco CO2**
 An ecological transition and ESG advisory organisation with activity in mobility, transport, climate practices, and environmental behaviour change. Represents the smaller, mission-driven consultancy profile within the set.
 
-### Verified indirect emissions for selected firms
+### Reported emissions for selected firms
 
-| Organisation | Reporting year | Indirect emissions (tCO2e) |
-|---|---|---|
-| ANTEA FRANCE | 2023 | 12,840.80 |
-| ARTELIA | 2022 | 17,944.00 |
-| BUREAU VERITAS EXPLOITATION | 2023 | 23,068.00 |
-| ECOCERT SA | 2024 | 3,183.60 |
-| Eco CO2 | 2023 | 1,513.92 |
+| Organisation | Year | Scope 1 (tCO2e) | Scope 2 (tCO2e) | Scope 3 (tCO2e) | Scope 3 % |
+|---|---|---|---|---|---|
+| ANTEA FRANCE | 2023 | 1,924.8 | 44.4 | 12,840.8 | 86.7% |
+| ARTELIA | 2022 | 3,365.0 | 981.0 | 17,944.0 | 80.5% |
+| BUREAU VERITAS EXPLOITATION | 2023 | 230.0 | 0.0 | 23,068.0 | 99.0% |
+| ECOCERT SA | 2024 | 565.3 | 12.1 | 3,183.6 | 84.6% |
+| Eco CO2 | 2023 | 26.4 | 1.4 | 1,535.6 | 98.2% |
+
+Scope 1 and Scope 2 values map directly to BEGES Categories 1 and 2. Scope 3-equivalent values are primarily aggregated from BEGES indirect emissions categories P3, P4, and P5. BEGES P6 is treated separately because it refers to avoided emissions and does not correspond directly to GHG Protocol Scope 3 emissions.
+
+---
+
+## Key analytical findings to date
+
+**Bureau Veritas Exploitation reports zero Scope 2.**
+For a firm of this size with 23,068 tCO2e of Scope 3, a zero Scope 2 is unusual. This may reflect a market-based electricity accounting choice, incomplete disclosure, or a data entry/reporting issue. The methodology fields will be checked in Notebook 03.
+
+**Antea France has the highest Scope 1 relative to peers.**
+At 1,924.8 tCO2e, this is consistent with a field engineering firm running a large company vehicle fleet. P1.2 (mobile combustion) accounts for the majority of that figure.
+
+**Headcount data was only available for Ecocert SA.**
+778 employees, giving 4.1 tCO2e Scope 3 per employee. The other four firms had no headcount in the ADEME export. Emissions intensity cannot be calculated without sourcing this externally.
+
+**Antea France and Bureau Veritas each have two reporting years available.**
+2019 and 2023 reports exist for both firms. The older reports are preserved in five_firms_full.csv for potential within-firm evolution analysis.
 
 ---
 
@@ -114,20 +116,27 @@ An ecological transition and ESG advisory organisation with activity in mobility
 
 ```
 bilan-critique/
-    data/
-        raw/
-            export-opendata-inventories-03-05-2026.csv
-        processed/
-            selected_firms.csv
-            selected_firms_indirect_emissions_check.csv
-    notebooks/
-        00_firm_selection.ipynb
-        01_emissions_extraction.ipynb        (next)
-        02_scope3_coverage.ipynb             (planned)
-        03_methodology_audit.ipynb           (planned)
-        04_esrs_checklist.ipynb              (planned)
-        05_reduction_action_plan.ipynb       (planned)
-    README.md
+├── data/
+│   ├── raw/
+│   │   └── export-opendata-inventories-03-05-2026.csv
+│   └── processed/
+│       ├── selected_firms.csv
+│       ├── selected_firms_indirect_emissions_check.csv
+│       ├── five_firms_full.csv
+│       ├── emissions_long.csv
+│       └── firm_summary.csv
+├── notebooks/
+│   ├── 00_firm_selection.ipynb              (complete)
+│   ├── 01_emissions_extraction.ipynb        (complete)
+│   ├── 02_indirect_emissions_coverage.ipynb (next)
+│   ├── 03_methodology_audit.ipynb           (planned)
+│   ├── 04_esrs_checklist.ipynb              (planned)
+│   └── 05_transition_plan_review.ipynb      (planned)
+├── references/
+│   ├── ghg-protocol-revised.pdf
+│   ├── Corporate-Value-Chain-Accounting-Reporing-Standard-EReader_041613_0.pdf
+│   └── Methode_pour_la_realisation_des_BEGES_-_Art-L229-25-_Version_4.pdf
+└── README.md
 ```
 
 ---
@@ -136,37 +145,37 @@ bilan-critique/
 
 ### Notebook 00: firm selection (complete)
 
-Loads the ADEME BEGES open-data export. Inspects columns and data structure. Uses SQL via DuckDB to filter and rank candidate organisations. Applies a reporting quality screening score. Inspects organisation description fields. Selects five firms for comparative analysis. Exports selected firms to a processed CSV checkpoint.
+Loads the ADEME BEGES open-data export. Inspects columns and data structure. Uses SQL via DuckDB to filter and rank candidate organisations. Applies a reporting quality screening score. Inspects organisation description fields. Selects five firms for comparative analysis. Exports selected firms to processed CSV checkpoints.
 
-Key learning: SQL SELECT, WHERE, GROUP BY, ORDER BY, LIKE, CAST, IS NOT NULL, computed columns, query iteration logic, and the difference between NAF codes and free-text description fields as selection signals.
+Key learning: SQL SELECT, WHERE, GROUP BY, ORDER BY, LIKE, CAST, IS NOT NULL, computed columns, query iteration logic, the difference between NAF codes and free-text description fields as selection signals.
 
-### Notebook 01: emissions extraction (next)
+### Notebook 01: emissions extraction (complete)
 
-Extracts all BEGES emissions categories (P1.1 through P6.1) for the five selected firms. Translates BEGES category structure into GHG Protocol Scope 1, 2, and 3 equivalents. Transforms data from wide to long format for analysis. Calculates emissions intensity per employee where headcount data is available. Exports a clean emissions dataframe as the basis for all subsequent notebooks.
+Extracts all BEGES emissions categories (P1.1 through P6.1) for the five selected firms. Documents the official BEGES category structure using the ADEME methodology document V4 (2016) and GHG Protocol Scope 3 Standard (2011) as primary references. Maps BEGES P-categories to GHG Protocol Scope 1, 2, and 3 equivalents. Transforms data from wide to long format. Calculates Scope 3 as a percentage of total reported emissions per firm. Flags headcount data gaps.
 
-Key learning: pandas melt and pivot, long versus wide data formats, BEGES to GHG Protocol category mapping, emissions intensity calculation.
+Key learning: pandas melt, wide versus long data formats, BEGES post structure and P-category groupings, BEGES to GHG Protocol mapping, emissions intensity calculation.
 
-### Notebook 02: Scope 3 coverage audit
+### Notebook 02: indirect emissions coverage (next)
 
-For each firm, assesses which BEGES indirect emissions categories are reported with primary data, reported with estimated data, explicitly excluded with justification, or absent without explanation. Builds a cross-firm coverage heatmap. Identifies systematic gaps and patterns across the five firms.
+For each firm, classifies each BEGES indirect emissions category as reported with a non-zero value, reported as zero, or missing. Builds a cross-firm coverage heatmap. Identifies which P3, P4, P5, and P6 categories are systematically absent. Maps BEGES categories to GHG Protocol Scope 3 categories to identify structural gaps. Uses the ADEME methodology document V4 as the primary reference for category definitions.
 
-Key learning: seaborn heatmaps, categorical data visualisation, gap analysis logic, BEGES P3 through P5 category interpretation.
+Key learning: seaborn heatmaps, categorical classification logic, coverage gap analysis, BEGES post-level interpretation, GHG Protocol Scope 3 category mapping.
 
-### Notebook 03: methodology audit
+### Notebook 03: methodology audit (planned)
 
-Documents where firms make different choices for the same reporting question. Scope 2 accounting method where data allows. Organisational boundary approach. Emission factor vintages and sources. Data quality documentation. Assesses whether choices are justified and disclosed, using ISO 14064-1 criteria as the reference.
+Audits the free-text methodology fields for each firm. Checks for disclosure of organisational boundary, consolidation approach, emission factor sources, uncertainty, base year, and recalculation policy. Flags the Bureau Veritas zero Scope 2 question. Assesses market-based versus location-based Scope 2 disclosure. Uses ISO 14064-1 transparency requirements as the reference framework.
 
-Key learning: qualitative data extraction from free-text fields, comparative methodology assessment, ISO 14064-1 compliance criteria.
+Key learning: pandas string methods and free-text extraction, ISO 14064-1 transparency criteria, qualitative scoring in Python.
 
-### Notebook 04: ESRS E1 checklist
+### Notebook 04: ESRS E1 checklist (planned)
 
-Applies selected ESRS E1 disclosure expectations to each firm's published BEGES data. Scores each firm against the checklist. Identifies gaps between current BEGES practice and stronger CSRD-aligned reporting. Produces a scored comparison table. Discusses double materiality as a concept and assesses whether any firm addresses it.
+Applies selected ESRS E1 disclosure expectations to each firm's published BEGES data. Scores each firm against the checklist. Identifies gaps between current BEGES practice and CSRD-aligned reporting. Framed as readiness signals, not legal compliance. Introduces double materiality as a concept and assesses whether any firm addresses it.
 
 Key learning: ESRS E1 structure, double materiality logic, disclosure requirement interpretation, scoring framework design in Python.
 
-### Notebook 05: reduction action plan
+### Notebook 05: transition plan review (planned)
 
-For the highest-emitting firm, identifies the three to five highest-impact indirect emissions categories. Proposes specific and measurable reduction levers with estimated savings. Prioritises by impact, feasibility, and cost. Aligns with Paris Agreement 1.5 degree trajectory using SNBC carbon budget reference. Structures output as a transition plan meeting selected ESRS E1 requirements.
+For the highest-emitting firm, extracts current reduction actions and targets from BEGES free-text fields. Proposes a stronger action plan with specific levers, estimated savings, and prioritisation by impact and feasibility. Aligns with Paris Agreement 1.5 degree trajectory using SNBC carbon budget reference. Framed as a consulting-style recommendation with honest caveats about data limitations.
 
 Key learning: lever analysis, trajectory alignment, transition plan structure, SNBC reference values, waterfall chart visualisation.
 
@@ -187,7 +196,6 @@ Key learning: lever analysis, trajectory alignment, transition plan structure, S
 | Market vs location-based Scope 2 | No | Yes |
 | Data quality assessment | No | Yes |
 | Cross-firm benchmarking | No | Yes |
-| Reduction action plan | No | Yes |
 | Transition plan structure | No | Yes |
 | SQL data extraction | No | Yes |
 

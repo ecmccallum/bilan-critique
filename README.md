@@ -78,7 +78,7 @@ An ecological transition and ESG advisory organisation with activity in mobility
 | ARTELIA | 2022 | 3,365.0 | 981.0 | 17,944.0 | 80.5% |
 | BUREAU VERITAS EXPLOITATION | 2023 | 230.0 | 0.0 | 23,068.0 | 99.0% |
 | ECOCERT SA | 2024 | 565.3 | 12.1 | 3,183.6 | 84.6% |
-| Eco CO2 | 2023 | 26.4 | 1.4 | 1,535.6 | 98.2% |
+| Eco CO2 | 2023 | 26.4 | 1.4 | 1,513.92 | 96.8% |
 
 Scope 1 and Scope 2 values map directly to BEGES Categories 1 and 2. Scope 3-equivalent values are primarily aggregated from BEGES indirect emissions categories P3, P4, and P5. BEGES P6 is treated separately because it refers to avoided emissions and does not correspond directly to GHG Protocol Scope 3 emissions.
 
@@ -98,6 +98,13 @@ At 1,924.8 tCO2e, this is consistent with a field engineering firm running a lar
 **Antea France and Bureau Veritas each have two reporting years available.**
 2019 and 2023 reports exist for both firms. The older reports are preserved in five_firms_full.csv for potential within-firm evolution analysis.
 
+**Eco CO2 is the only firm with a non-zero P6 value.**
+P6 in BEGES refers to avoided emissions, not indirect emissions, and must be
+excluded from Scope 3-equivalent totals. Eco CO2 reports 21.64 tCO2e in P6.1.
+Their corrected Scope 3-equivalent total is 1,513.92 tCO2e (96.8% of total),
+not 1,535.56 tCO2e as initially calculated. This will be investigated in
+notebook 03 to determine whether the P6 value represents genuine avoided
+emissions or a misclassification.
 ---
 
 ## Technical stack
@@ -125,6 +132,8 @@ bilan-critique/
 │       ├── five_firms_full.csv
 │       ├── emissions_long.csv
 │       └── firm_summary.csv
+│       ├── p6_avoided_emissions.csv
+
 ├── notebooks/
 │   ├── 00_firm_selection.ipynb              (complete)
 │   ├── 01_emissions_extraction.ipynb        (complete)
@@ -178,26 +187,6 @@ Key learning: ESRS E1 structure, double materiality logic, disclosure requiremen
 For the highest-emitting firm, extracts current reduction actions and targets from BEGES free-text fields. Proposes a stronger action plan with specific levers, estimated savings, and prioritisation by impact and feasibility. Aligns with Paris Agreement 1.5 degree trajectory using SNBC carbon budget reference. Framed as a consulting-style recommendation with honest caveats about data limitations.
 
 Key learning: lever analysis, trajectory alignment, transition plan structure, SNBC reference values, waterfall chart visualisation.
-
----
-
-## What this project covers that the Lacq model does not
-
-| Skill area | Lacq model | bilan-critique |
-|---|---|---|
-| Scope 1 and 2 accounting | Yes | Yes |
-| ADEME Base Empreinte | Yes | Yes |
-| EU climate targets | Yes | Yes |
-| Scope 3 in depth | No | Yes |
-| ISO 14064-1 applied | No | Yes |
-| GHG Protocol Scope 3 Standard | No | Yes |
-| CSRD and ESRS E1 | No | Yes |
-| Double materiality | No | Yes |
-| Market vs location-based Scope 2 | No | Yes |
-| Data quality assessment | No | Yes |
-| Cross-firm benchmarking | No | Yes |
-| Transition plan structure | No | Yes |
-| SQL data extraction | No | Yes |
 
 ---
 

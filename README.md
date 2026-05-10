@@ -22,6 +22,8 @@ The scorecard synthesises findings from six analytical notebooks into a five-axi
 reporting quality profile per firm. The average score is an unweighted indicative
 synthesis metric, not a formal rating.
 
+| Firm | Avg score / 100 |
+|------|----------------|
 | Artelia | 74.0 |
 | Ecocert SA | 63.0 |
 | Eco CO2 | 60.5 |

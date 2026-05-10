@@ -1,0 +1,23 @@
+beges_category,Antea France,Artelia,Bureau Veritas,Ecocert SA,Eco CO2
+P1.1  Stationary combustion,1,1,0,0,1
+P1.2  Mobile combustion,1,1,1,1,1
+P1.3  Process emissions,0,0,0,0,0
+P1.4  Fugitive emissions,0,1,1,0,0
+P1.5  Biomass emissions,0,0,0,0,0
+P2.1  Electricity,1,1,0,1,1
+"P2.2  Steam, heat, cooling",0,1,0,0,1
+P3.1  Upstream freight,1,0,0,1,1
+P3.2  Business travel,0,0,0,0,0
+P3.3  Visitor and client travel,1,1,1,1,1
+P3.4  Downstream freight,0,0,0,1,0
+P3.5  Employee commuting,1,1,0,1,1
+P4.1  Upstream energy,1,1,1,1,1
+P4.2  Purchased goods and services,1,1,1,1,1
+P4.3  Capital goods,1,1,1,1,1
+P4.4  Waste,1,0,0,1,0
+P4.5  Upstream leased assets,1,0,1,1,1
+P5.1  Use of sold products,0,0,0,0,1
+P5.2  End of life,0,0,0,0,0
+P5.3  Franchises,0,0,0,0,1
+P5.4  Downstream leased assets,0,0,0,0,0
+P6.1  Other indirect and investments,0,0,0,0,1
